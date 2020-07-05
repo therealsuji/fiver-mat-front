@@ -1,0 +1,7 @@
+{
+  "name": "fiver-mat-front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
