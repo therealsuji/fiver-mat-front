@@ -1,95 +1,45 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'customer', pathMatch: 'full' },
   {
-    path: 'customer',
-    children: [
-      {
-        path: '',
-        loadChildren: () => import('./customer/customer.module').then(m => m.CustomerPageModule),
-      },
-    ]
+    path: 'login',
+    canActivate:[LoginGuard],
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'app',
-    redirectTo: 'app/tabs/home',
-    pathMatch: 'full'
-  },
-
-  {
-    path: 'app',
-    children: [
-      {
-        path: 'tabs',
-        loadChildren: () => import('./customer/tabs/tabs.module').then(m => m.TabsPageModule),
-      },
-      {
-        path: 'add-to-cart/:productId',
-        loadChildren: () => import('./customer/add-to-cart/add-to-cart.module').then(m => m.AddToCartPageModule)
-      },
-      {
-        path: 'check-out',
-        loadChildren: () => import('./customer/check-out/check-out.module').then(m => m.CheckOutPageModule)
-      },
-      {
-        path: 'category-restaurant/:id',
-        loadChildren: () => import('./customer/category-restaurant/category-restaurant.module').then(m => m.CategoryRestaurantPageModule)
-      }, {
-        path: 'cat-details/:brandId/:brandName/:fromCatPage',
-        loadChildren: () => import('./customer/restaurant-details/restaurant-details.module').then(m => m.RestaurantDetailsPageModule)
-      },
-      {
-        path: 'settings',
-        loadChildren: () => import('./customer/settings/settings.module').then(m => m.SettingsPageModule)
-      },
-
-    ]
+    path:'',
+    pathMatch:"full",
+    redirectTo:'/login'
   },
   {
-    path: 'restaurant',
-    redirectTo: 'restaurant/tabs/home',
-    pathMatch: 'full'
+    path: 'signup',
+    loadChildren: () => import('./pages/signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'restaurant',
-    children: [
-      {
-        path: 'home',
-        loadChildren: () => import('./restaurant/orders/orders.module').then(m => m.OrdersPageModule)
-      },
-
-
-    ]
+    path:"app",
+    canActivate:[AuthGuard],
+    loadChildren: () => import('./pages/menu/menu.module').then( m => m.MenuPageModule),
+    
   },
   {
-    path: 'driver',
-    redirectTo: 'driver/tabs',
-    pathMatch: 'full'
+    path: 'registration-form/:user_id',
+    loadChildren: () => import('./pages/registration-form/registration-form.module').then( m => m.RegistrationFormPageModule)
   },
   {
-    path: 'driver',
-    children: [
-      {
-        path: 'tabs',
-        loadChildren: () => import('./driver/tabs/tabs.module').then(m => m.TabsPageModule)
-      },
-
-    ]
+    path: 'continue-reg',
+    loadChildren: () => import('./pages/continue-reg/continue-reg.module').then( m => m.ContinueRegPageModule)
   },
-
-
-
-
-
-
+ 
+ 
+  
 ];
-
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
