@@ -8,9 +8,10 @@ import { UserDetailsService } from "src/app/services/user-details.service";
 import { NavController } from "@ionic/angular";
 import { DomSanitizer } from "@angular/platform-browser";
 import { ConstantsService } from "src/app/services/constants.service";
-import { Camera, CameraResultType } from "@capacitor/core";
+import { Plugins, CameraResultType } from "@capacitor/core";
 import { take } from "rxjs/operators";
 import * as moment from "moment";
+const { Camera } = Plugins;
 
 @Component({
   selector: "app-profile",
@@ -90,6 +91,15 @@ export class ProfilePage implements OnInit {
     if (paramName == "profile_pic") {
       this.profilePicture = image.dataUrl;
     }
+    if (paramName == "image1") {
+      this.pic1Picture = image.dataUrl;
+    }
+    if (paramName == "image2") {
+      this.pic2Picture = image.dataUrl;
+    }
+    if (paramName == "image3") {
+      this.pic3Picture = image.dataUrl;
+    }
     let base64 = image.dataUrl.split(",")[1];
     let blob = this.b64toBlob(base64, "image/" + image.format, 512);
     this.uploadImages(paramName, blob);
@@ -138,10 +148,10 @@ export class ProfilePage implements OnInit {
   }
   loadPhotos(id) {
     this.userDetails.getUserPhotos(id).subscribe(async (res) => {
-      this.profilePicture = this.constant.baseImageUrl + res.profile_pic;
-      this.pic1Picture = this.constant.baseImageUrl + res.image1;
-      this.pic2Picture = this.constant.baseImageUrl + res.image2;
-      this.pic3Picture = this.constant.baseImageUrl + res.image3;
+      this.profilePicture = res.profile_pic == "" || res.profile_pic == null ? "" : this.baseImageUrl + res.profile_pic;
+      this.pic1Picture = res.image1 == "" || res.image1 == null ? "" : this.baseImageUrl + res.image1;
+      this.pic2Picture = res.image2 == "" || res.image2 == null ? "" : this.baseImageUrl + res.image2;
+      this.pic3Picture = res.image3 == "" || res.image3 == null ? "" : this.baseImageUrl + res.image3;
     });
   }
 
@@ -274,6 +284,11 @@ export class ProfilePage implements OnInit {
 
   async initializeData() {
     this.user_id = await this.userAuth.getUserId();
+    this.setFormValue(this.basicDetails, "user_id", this.user_id);
+    this.setFormValue(this.familyDetails, "user_id", this.user_id);
+    this.setFormValue(this.churchDetails, "user_id", this.user_id);
+    this.setFormValue(this.personalDetails, "user_id", this.user_id);
+    this.setFormValue(this.physicalDetails, "user_id", this.user_id);
     this.photoFormData.append("userId", this.user_id);
     this.shouldLoad.subscribe(async (fromSignUp) => {
       this.loadingForm = true;
@@ -282,8 +297,6 @@ export class ProfilePage implements OnInit {
       this.loadPhotos(this.user_id);
     });
   }
-
-
 
   async countryChanged(event) {
     if (this.loadingForm) {
@@ -303,7 +316,7 @@ export class ProfilePage implements OnInit {
       this.loadingService.presentAlert("Attention", "Something went wrong");
     }
   }
-  
+
   async stateChanged(event) {
     if (this.loadingForm) {
       return;
@@ -321,8 +334,8 @@ export class ProfilePage implements OnInit {
     }
   }
 
-  async saveAll(){
-    try{
+  async saveAll() {
+    try {
       await this.loadingService.presentLoading();
       if (this.basicDetails.get("dob").value != "") {
         this.setFormValue(this.basicDetails, "dob", moment(this.basicDetails.get("dob").value).format("YYYY-MM-DD"));
@@ -334,11 +347,12 @@ export class ProfilePage implements OnInit {
       await this.userDetails.savePersonalDetails(this.personalDetails.getRawValue()).toPromise();
       await this.userDetails.savePhysicalDetails(this.physicalDetails.getRawValue()).toPromise();
       await this.loadingService.dismissLoader();
+      await this.loadingService.onDidDismiss();
       this.loadingService.presentAlert("Attention", "Successfully updated profile");
-    }catch(e){
+    } catch (e) {
       await this.loadingService.dismissLoader();
+      await this.loadingService.onDidDismiss();
       this.loadingService.presentAlert("Attention", "Something went wrong");
     }
-    
   }
 }

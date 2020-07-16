@@ -8,7 +8,6 @@ import { SearchPageRoutingModule } from './search-routing.module';
 
 import { SearchPage } from './search.page';
 import { SharedModule } from 'src/app/common/shared/shared.module';
-import { FilterModalComponent } from 'src/app/componenets/filter-modal/filter-modal.component';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { FilterModalComponent } from 'src/app/componenets/filter-modal/filter-mo
     SharedModule,
     SearchPageRoutingModule
   ],
-  declarations: [SearchPage,FilterModalComponent]
+  declarations: [SearchPage]
 })
 export class SearchPageModule {}

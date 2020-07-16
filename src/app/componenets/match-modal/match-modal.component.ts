@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { ConstantsService } from 'src/app/services/constants.service';
 
 @Component({
   selector: 'app-match-modal',
@@ -8,11 +9,23 @@ import { ModalController } from '@ionic/angular';
 })
 export class MatchModalComponent implements OnInit {
 
-  constructor(private modalCtrl:ModalController) { }
+  constructor(private modalCtrl:ModalController,private constant: ConstantsService) { }
   @Input() item;
-  ngOnInit() {}
+  baseImageUrl = "";
+
+  ngOnInit() {
+    this.baseImageUrl = this.constant.baseImageUrl;        
+  }
   
   dismiss(){
     this.modalCtrl.dismiss();
   }
+
+
+  slideOpts = {
+    initialSlide: 1,
+    loop:true,
+    pager:true,
+    speed: 400
+  };
 }

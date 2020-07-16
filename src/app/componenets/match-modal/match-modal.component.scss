@@ -22,3 +22,9 @@
 ion-content{
   --padding-bottom:25px;
 }
+.image-container {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-top: 15px;
+  max-height: 500px;
+}

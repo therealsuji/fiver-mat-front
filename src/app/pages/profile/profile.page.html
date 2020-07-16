@@ -8,6 +8,30 @@
 </ion-header>
 <ion-content>
   <div class="container">
+    <div>
+      <div class="img-wrap">
+        <div class="img-box" (click)="takePicture('profile_pic')">
+          <ion-icon *ngIf="profilePicture == ''" name="add-outline"></ion-icon>
+          <img src="{{ profilePicture}}" alt="" />
+        </div>
+        <div class="img-box" (click)="takePicture('image1')">
+          <ion-icon *ngIf="pic1Picture == ''" name="add-outline"></ion-icon>
+          <img src="{{ pic1Picture}}" alt="" />
+        </div>
+        <div class="img-box" (click)="takePicture('image2')">
+          <ion-icon *ngIf="pic2Picture == ''" name="add-outline"></ion-icon>
+          <img src="{{pic2Picture}}" alt="" />
+        </div>
+        <div class="img-box"  (click)="takePicture('image3')" >
+          <ion-icon *ngIf="pic3Picture == ''" name="add-outline"></ion-icon>
+          <img src="{{pic3Picture}}" alt="" />
+        </div>
+      </div>
+      <!-- <ion-button (click)="takePicture('profile_pic')" expand="block">Profile Photo</ion-button>
+      <ion-button (click)="takePicture('image1')" expand="block">Image 1 Photo</ion-button>
+      <ion-button (click)="takePicture('image2')" expand="block">Image 2 Photo</ion-button>
+      <ion-button (click)="takePicture('image3')" expand="block">Image 3 Photo</ion-button> -->
+    </div>
     <form [formGroup]="basicDetails">
       <div class="input-group">
         <ion-label>Name</ion-label>
@@ -65,7 +89,6 @@
         <ion-label>Postal Code</ion-label>
         <ion-input type="number" formControlName="postal_code"></ion-input>
       </div>
- 
     </form>
 
     <form [formGroup]="personalDetails">
@@ -226,27 +249,6 @@
         <ion-input type="number" maxlength="4" formControlName="year_baptism"></ion-input>
       </div>
     </form>
-    <div>
-      <div class="img-wrap">
-        <div class="img-prof-box">
-          <img src="{{profilePicture}}" alt="" />
-        </div>
-        <div class="img-box">
-          <img src="{{pic1Picture}}" alt="" />
-        </div>
-        <div class="img-box">
-          <img src="{{pic2Picture}}" alt="" />
-        </div>
-        <div class="img-box">
-          <img src="{{pic3Picture}}" alt="" />
-        </div>
-      </div>
-      <ion-button (click)="takePicture('profile_pic')" expand="block">Profile Photo</ion-button>
-      <ion-button (click)="takePicture('image1')" expand="block">Image 1 Photo</ion-button>
-      <ion-button (click)="takePicture('image2')" expand="block">Image 2 Photo</ion-button>
-      <ion-button (click)="takePicture('image3')" expand="block">Image 3 Photo</ion-button>
-      
-    </div>
   </div>
 
   <ion-button class="floatingBtn" (click)="saveAll()">Save All</ion-button>

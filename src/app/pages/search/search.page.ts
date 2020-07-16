@@ -21,7 +21,6 @@ export class SearchPage implements OnInit {
   motherTongue;
   loading = true;
   ngOnInit() {
-    this.loadFilters();
     this.getMatches();
   }
   async openMatch(item) {
@@ -35,6 +34,7 @@ export class SearchPage implements OnInit {
   }
 
   async openSearch() {
+    if(this.loading){return;}
     const modal = await this.modalCtrl.create({
       component: FilterModalComponent,
       componentProps: {
@@ -44,7 +44,10 @@ export class SearchPage implements OnInit {
     });
     await modal.present();
     const { data } = await modal.onWillDismiss();
-    console.log(data);
+    if(data.clearFilter){
+      this.matches = this.masterMatches;
+      return;
+    } 
 
     if (data != undefined) {
       this.matches = this.masterMatches.filter((res) => {
@@ -52,7 +55,7 @@ export class SearchPage implements OnInit {
         if (res.name.match(regexExpression) && data.nameValue != undefined) {
           return res;
         }
-        if (res.martial_status == data.martialValue  && data.martialValue != undefined) {
+        if (res.martial_status == data.martialValue && data.martialValue != undefined) {
           return res;
         }
         let age = moment().diff(res.dob, "years");
@@ -63,20 +66,17 @@ export class SearchPage implements OnInit {
         if (res.martial_status.match(regexExpression) && data.martialValue != undefined) {
           return res;
         }
-      });
-    }
+      }); 
+    } 
   }
   async loadFilters() {
-    this.userDetails.getMartialStatus().subscribe((res) => {
-      this.martialStatus = res;
-    });
-    this.userDetails.getLanguage().subscribe((res) => {
-      this.motherTongue = res;
-    });
+    this.martialStatus = await this.userDetails.getMartialStatus().toPromise();
+    this.motherTongue = await this.userDetails.getLanguage().toPromise();
   }
 
   async getMatches() {
     const userId = await this.authService.getUserId();
+    await this.loadFilters();
     this.masterMatches = this.matchService.getAllUsers(userId).subscribe((res) => {
       this.masterMatches = res;
       this.matches = res;
@@ -85,8 +85,10 @@ export class SearchPage implements OnInit {
   }
 
   async doRefresh(event) {
+    this.loading = true;
     await this.getMatches();
     setTimeout(() => {
+      this.loading = false;
       event.target.complete();
     }, 500);
   }

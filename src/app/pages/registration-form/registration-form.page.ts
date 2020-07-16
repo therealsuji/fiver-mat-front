@@ -60,11 +60,11 @@ export class RegistrationFormPage implements OnInit {
   photoFormData = new FormData();
 
   maxYear;
-  profilePicture;
-  pic1Picture;
-  pic2Picture;
-  pic3Picture;
-  baseImageUrl;
+  profilePicture = "";
+  pic1Picture = "";
+  pic2Picture = "";
+  pic3Picture = "";
+  baseImageUrl = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -103,6 +103,15 @@ export class RegistrationFormPage implements OnInit {
     });
     if (paramName == "profile_pic") {
       this.profilePicture = image.dataUrl;
+    }
+    if (paramName == "image1") {
+      this.pic1Picture = image.dataUrl;
+    }
+    if (paramName == "image2") {
+      this.pic2Picture = image.dataUrl;
+    }
+    if (paramName == "image3") {
+      this.pic3Picture = image.dataUrl;
     }
     let base64 = image.dataUrl.split(",")[1];
     let blob = this.b64toBlob(base64, "image/" + image.format, 512);
@@ -182,10 +191,10 @@ export class RegistrationFormPage implements OnInit {
   }
   loadPhotos(id) {
     this.userDetails.getUserPhotos(id).subscribe(async (res) => {
-      this.profilePicture = this.constant.baseImageUrl + res.profile_pic;
-      this.pic1Picture = this.constant.baseImageUrl + res.image1;
-      this.pic2Picture = this.constant.baseImageUrl + res.image2;
-      this.pic3Picture = this.constant.baseImageUrl + res.image3;
+      this.profilePicture = res.profile_pic == "" || res.profile_pic == null ? "" : this.baseImageUrl + res.profile_pic;
+      this.pic1Picture = res.image1 == "" || res.image1 == null ? "" : this.baseImageUrl + res.image1;
+      this.pic2Picture = res.image2 == "" || res.image2 == null ? "" : this.baseImageUrl + res.image2;
+      this.pic3Picture = res.image3 == "" || res.image3 == null ? "" : this.baseImageUrl + res.image3;
     });
   }
 

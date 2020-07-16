@@ -17,7 +17,7 @@ export class UserDetailsService {
     );
   }
 
-  saveBasicDetails(data) {
+  saveBasicDetails(data) {   
     return this.http.post(this.constants.baseAppUrl + "basic-details", data).pipe(
       map((res: any) => {
         return res;

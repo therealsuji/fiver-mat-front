@@ -54,3 +54,26 @@ ion-content {
   box-shadow: 1px 3px 9px 6px #a2a2a294;
   margin-top: 15px;
 }
+ 
+.img-wrap{
+  flex-flow: wrap;
+  display: flex;
+  margin-bottom: 25px;
+  justify-content: space-between;
+}
+
+.img-box {
+  width: 175px;
+  border-radius: 15px;
+  display: flex;
+  overflow: hidden;
+  margin-top: 15px;
+  background-color: #c5c5c5;
+  height: 200px;
+  ion-icon{
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 50px;
+  }
+}

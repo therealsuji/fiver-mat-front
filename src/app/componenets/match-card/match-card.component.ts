@@ -9,9 +9,9 @@ import { ConstantsService } from "src/app/services/constants.service";
 export class MatchCardComponent implements OnInit {
   constructor(private constants: ConstantsService) {}
   @Input() user;
+  baseImageUrl = this.constants.baseImageUrl;
   dob;
   ngOnInit() {
-    this.user.profile_pic = this.constants.baseImageUrl + this.user.profile_pic;
-    this.dob = moment().diff(this.user.dob, "years");
+     this.dob = moment().diff(this.user.dob, "years");
   }
 }

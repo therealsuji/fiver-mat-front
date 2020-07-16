@@ -4,8 +4,8 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantsService {
-  readonly baseAppUrl: string = 'https://88733ce25096.ngrok.io/fiver-matrinmony-backend/public/api/';
-  readonly baseImageUrl: string = 'https://88733ce25096.ngrok.io/fiver-matrinmony-backend/public/uploads/';
+  readonly baseAppUrl: string = 'https://marutibulkcarrier.com/demo/public/api/';
+  readonly baseImageUrl: string = 'https://marutibulkcarrier.com/demo/public/uploads/';
   readonly apiUserName: string = 'admin';
   readonly apiPassword: string = '1234';
 

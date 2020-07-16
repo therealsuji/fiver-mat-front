@@ -10,6 +10,22 @@
 </ion-header>
 <ion-content>
   <div class="container">
+    <div class="image-container">
+      <ion-slides [options]="slideOpts">
+        <ion-slide *ngIf="item.profile_pic != null">
+          <img src="{{ baseImageUrl }}{{ item.profile_pic }}" alt="" />
+        </ion-slide>
+        <ion-slide *ngIf="item.image1 != null">
+          <img src="{{ baseImageUrl }}{{ item.image1 }}" alt="" />
+        </ion-slide>
+        <ion-slide *ngIf="item.image2 != null">
+          <img src="{{ baseImageUrl }}{{ item.image2 }}" alt="" />
+        </ion-slide>
+        <ion-slide *ngIf="item.image3 != null">
+          <img src="{{ baseImageUrl }}{{ item.image3 }}" alt="" />
+        </ion-slide>
+      </ion-slides>
+    </div>
     <div class="cat">Basic Details</div>
     <div class="input-group">
       <ion-label>Name</ion-label>

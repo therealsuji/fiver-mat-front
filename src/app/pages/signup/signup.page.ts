@@ -23,7 +23,7 @@ export class SignupPage implements OnInit {
       this.error = "Please enter your mobile number";
       return;
     }
-    if (this.mobileNumber.toString().length < 10) {
+    if (this.mobileNumber.toString().length < 9) {
       this.error = "Please enter a valid mobile number";
       return;
     }
