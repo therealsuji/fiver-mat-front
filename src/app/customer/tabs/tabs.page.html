@@ -1,0 +1,21 @@
+<ion-tabs>
+  <app-view-cart-strip [routerLink]="['/app/check-out']" routerDirection="forward"></app-view-cart-strip>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon src="/assets/nav/home.svg"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="search/nan">
+      <ion-icon src="/assets/nav/search.svg"></ion-icon>
+      <ion-label>Search</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="orders">
+      <ion-icon src="/assets/nav/orders.svg"></ion-icon>
+      <ion-label>Orders</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="account">
+      <ion-icon src="/assets/nav/user.svg"></ion-icon>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

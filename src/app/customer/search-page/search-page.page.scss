@@ -1,0 +1,28 @@
+.results-for {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 11px;
+}
+.meal {
+  padding: 10px 15px 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  .details {
+    .name {
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .price {
+      color: #545454;
+    }
+  }
+  img {
+    border-radius: 20px;
+    max-width: 65px;
+  }
+}
+.no-search-text {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 25px;
+}

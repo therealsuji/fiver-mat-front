@@ -1,0 +1,18 @@
+<ion-menu type="overlay" contentId="menu">
+  <ion-content class="menu" scrollY="false">
+     <img src="assets/icon/logo.png" class="logo" alt="" />
+    <div class="full-name">{{userName | async}}</div>
+    <ion-menu-toggle auto-hide="false" > 
+      <div class="route-wrapper">
+        <ion-item routerLink="/app/home" detail="false" lines="none" routerDirection="forward">Home</ion-item>
+        <ion-item routerLink="/app/search" detail="false" lines="none" routerDirection="forward">Search</ion-item>
+        <ion-item routerLink="/app/profile" detail="false" lines="none" routerDirection="forward">My Account</ion-item>
+      </div>
+
+    </ion-menu-toggle>
+
+    <ion-button expand="block" mode="md" class="logout-btn flex" (click)="logout()">Logout</ion-button>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet mode="md" id="menu"></ion-router-outlet>

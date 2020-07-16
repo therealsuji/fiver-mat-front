@@ -1,0 +1,39 @@
+@import "src/theme/colors.scss";
+
+ion-toolbar {
+  --background: white;
+  ion-title {
+    color: $base-color;
+  }
+}
+.fi-block {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .small {
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  .large {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .medium {
+    font-weight: 500;
+    font-size: 20px;
+  }
+}
+.bottom-btns {
+  margin-top: 55px;
+  display: flex;
+  justify-content: space-evenly;
+  ion-button {
+    text-transform: capitalize;
+  }
+  span {
+    font-weight: 500;
+    font-size: 20px;
+    align-self: center;
+  }
+}

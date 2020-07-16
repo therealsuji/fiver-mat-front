@@ -1,0 +1,23 @@
+@mixin for-iphone5-only {
+  @media (max-width: 320px) {
+    @content;
+  }
+}
+
+@mixin for-ipad {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-pixel-only {
+  @media (max-width: 420px) {
+    @content;
+  }
+}
+
+@mixin for-mobile-only {
+  @media (max-width: 425px) {
+    @content;
+  }
+}

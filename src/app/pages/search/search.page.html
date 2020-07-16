@@ -1,0 +1,28 @@
+<ion-header mode='md'> 
+  <ion-toolbar>
+    <ion-title>Search</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)='openSearch()'>
+      <ion-button>
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <ion-refresher mode='md' slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="loading">
+    <div *ngFor="let item of [0,0,0]" class="thumbnail-holder">
+      <ion-thumbnail>
+        <ion-skeleton-text animated  ></ion-skeleton-text>
+      </ion-thumbnail>
+    </div>
+  </div>
+  <app-match-card *ngFor="let item of matches" [user]="item" (click)="openMatch(item)"></app-match-card>
+  <div class="no-results" *ngIf="matches.length == 0">Couldn't find a user with that query</div>
+</ion-content>

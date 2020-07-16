@@ -1,0 +1,295 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registration</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="continue-reg"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="progress-container container">
+    <div id="progress-circle"></div>
+    <div class="step-text">
+      <div class="current-step">{{step.current}}</div>
+      <div class="next-step">Next {{step.next}}</div>
+    </div>
+  </div>
+  <div class="container">
+
+    
+    <form [formGroup]="basicDetails" *ngIf="step.number == 1">
+      
+      <div class="input-group">
+        <ion-label>Name</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Surname</ion-label>
+        <ion-input formControlName="surname"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Date of Birth</ion-label>
+        <ion-datetime  [max]="maxYear" formControlName="dob"></ion-datetime>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Gender</ion-label>
+        <ion-select formControlName="gender">
+          <ion-select-option value="male">Female</ion-select-option>
+          <ion-select-option value="female">Male</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Martial Status</ion-label>
+        <ion-select formControlName="martial_status">
+          <ion-select-option *ngFor="let item of martialStatus " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Mobile Number</ion-label>
+        <ion-input type="number" maxlength="10" formControlName="mobile_no"></ion-input>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Country</ion-label>
+        <ion-select formControlName="country" (ionChange)="countryChanged($event)">
+          <ion-select-option *ngFor="let item of countries " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>State</ion-label>
+        <ion-select formControlName="state" (ionChange)="stateChanged($event)">
+          <ion-select-option *ngFor="let item of states " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>City</ion-label>
+        <ion-select formControlName="city">
+          <ion-select-option *ngFor="let item of cities " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Postal Code</ion-label>
+        <ion-input type="number" formControlName="postal_code"></ion-input>
+      </div>
+     
+      <ion-button (click)="submitForm(1)" expand="block" mode="md">
+        Next
+      </ion-button>
+    </form>
+
+    <form [formGroup]="personalDetails" *ngIf="step.number == 2">
+      <div class="input-group">
+        <ion-label>Partner Expectation</ion-label>
+        <ion-select formControlName="partner_expectation">
+          <ion-select-option *ngFor="let item of partnerExpectation " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Highest Education</ion-label>
+        <ion-select formControlName="highest_edu">
+          <ion-select-option *ngFor="let item of highestEducation " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Specialization</ion-label>
+        <ion-input formControlName="specialization"></ion-input>
+      </div>
+
+      <div class="input-group">
+        <ion-label>Occupation</ion-label>
+        <ion-select formControlName="occupation">
+          <ion-select-option *ngFor="let item of occupation " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Designation</ion-label>
+        <ion-input formControlName="designation"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Annual Income</ion-label>
+        <ion-select formControlName="annual_income">
+          <ion-select-option *ngFor="let item of annulIncome " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Language</ion-label>
+        <ion-select formControlName="language">
+          <ion-select-option *ngFor="let item of language " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Mother Tongue</ion-label>
+        <ion-select formControlName="mother_tongue">
+          <ion-select-option *ngFor="let item of language " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Drink</ion-label>
+        <ion-select formControlName="drink">
+          <ion-select-option value="1">Yes</ion-select-option>
+          <ion-select-option value="0">No</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Smoke</ion-label>
+        <ion-select formControlName="smoke">
+          <ion-select-option value="1">Yes</ion-select-option>
+          <ion-select-option value="0">No</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Diet</ion-label>
+        <ion-select formControlName="diet">
+          <ion-select-option *ngFor="let item of diet " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <ion-button (click)="submitForm(2)" expand="block" mode="md">
+        Next
+      </ion-button>
+      <ion-button (click)="goBack()" expand="block" mode="md">
+        Back
+      </ion-button>
+    </form>
+    <form [formGroup]="physicalDetails" *ngIf="step.number == 3">
+      <div class="input-group">
+        <ion-label>Height</ion-label>
+        <ion-select formControlName="height">
+          <ion-select-option *ngFor="let item of height " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Weight</ion-label>
+        <ion-input formControlName="weight"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Complexion</ion-label>
+        <ion-select formControlName="complexion">
+          <ion-select-option *ngFor="let item of complexion " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Blood Group</ion-label>
+        <ion-select formControlName="blood_group">
+          <ion-select-option *ngFor="let item of bloodGroup " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Body Type</ion-label>
+        <ion-select formControlName="body_type">
+          <ion-select-option *ngFor="let item of bodyType " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Disability </ion-label>
+        <ion-input formControlName="disability"></ion-input>
+      </div>
+
+      <ion-button (click)="submitForm(3)" expand="block" mode="md">
+        Next
+      </ion-button>
+      <ion-button (click)="goBack()" expand="block" mode="md">
+        Back
+      </ion-button>
+    </form>
+    <form [formGroup]="familyDetails" *ngIf="step.number == 4">
+      <div class="input-group">
+        <ion-label>Fathers Name</ion-label>
+        <ion-input formControlName="fathers_name"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Mothers Name</ion-label>
+        <ion-input formControlName="mothers_name"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>No of Brothers</ion-label>
+        <ion-input type="number" maxlength="2" formControlName="no_brothers"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>No of Sister</ion-label>
+        <ion-input type="number" maxlength="2" formControlName="no_sisters"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Parents Contact</ion-label>
+        <ion-input type="number" maxlength="15" formControlName="parent_contact"></ion-input>
+      </div>
+      <ion-button (click)="submitForm(4)" expand="block" mode="md">
+        Next
+      </ion-button>
+      <ion-button (click)="goBack()" expand="block" mode="md">
+        Back
+      </ion-button>
+    </form>
+
+    <form [formGroup]="churchDetails" *ngIf="step.number == 5">
+      <div class="input-group">
+        <ion-label>Name of Church Priest</ion-label>
+        <ion-input formControlName="name_church_priest"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Church contact no</ion-label>
+        <ion-input type="number" formControlName="church_contact_no"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Denomination</ion-label>
+        <ion-select formControlName="denomination">
+          <ion-select-option *ngFor="let item of denomination " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Name of Church</ion-label>
+        <ion-input formControlName="name_church"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Church Address</ion-label>
+        <ion-input formControlName="church_add"></ion-input>
+      </div>
+      <div class="input-group">
+        <ion-label>Ministry</ion-label>
+        <ion-select formControlName="ministry">
+          <ion-select-option *ngFor="let item of ministry " [value]="item.id">{{item.field_value}}</ion-select-option>
+        </ion-select>
+      </div>
+      <div class="input-group">
+        <ion-label>Year of Baptism</ion-label>
+        <ion-input type="number" maxlength="4" formControlName="year_baptism"></ion-input>
+      </div>
+      <ion-button (click)="submitForm(5)" expand="block" mode="md">
+        Next
+      </ion-button>
+      <ion-button (click)="goBack()" expand="block" mode="md">
+        Back
+      </ion-button>
+    </form>
+    <div  *ngIf="step.number == 6">
+      <div class="img-wrap">
+        <div class="img-prof-box">
+          <img src="{{profilePicture}}" alt="" />
+        </div>
+        <div class="img-box">
+          <img src="{{pic1Picture}}" alt="" />
+        </div>
+        <div class="img-box">
+          <img src="{{pic2Picture}}" alt="" />
+        </div>
+        <div class="img-box">
+          <img src="{{pic3Picture}}" alt="" />
+        </div>
+      </div>
+      <ion-button (click)="takePicture('profile_pic')" expand="block">Profile Photo</ion-button>
+      <ion-button (click)="takePicture('image1')" expand="block">Image 1 Photo</ion-button>
+      <ion-button (click)="takePicture('image2')" expand="block">Image 2 Photo</ion-button>
+      <ion-button (click)="takePicture('image3')" expand="block">Image 3 Photo</ion-button>
+      <ion-button (click)="savePhotos()" expand="block" mode="md">
+        Next
+      </ion-button>
+      <ion-button (click)="goBack()" expand="block" mode="md">
+        Back
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,54 @@
+<ion-content [scrollEvents]="true" (ionScroll)="logScrolling($event)">
+  <div #melHeader>
+    <ion-header>
+      <ion-toolbar mode="ios" class="main-banner" style="--background: url({{brandImage}}) no-repeat center center / cover;">
+        <ion-buttons slot="start">
+          <ion-back-button text="" color="dark" icon="/assets/icons/back-btn.svg" defaultHref="app/tabs/home"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <div class="container">
+      <div class="name">{{brandName}}</div>
+      <div class="res-name-status-holder">
+        <div class="status">{{brandStatus == 1?'Open':'Close'}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="categoryList.getValue().length">
+      <div class="divider"></div>
+      <div class="chip-holder" #fixedTopChips>
+        <ion-chip [class]="cat.mbcatId == selectedCatId ? 'active':''" mode="md" *ngFor="let cat of categoryList | async" id="ch{{cat.mbcatId}}">
+          <ion-label (click)="selectedCategory(cat)">{{cat.mbcatName}}</ion-label>
+        </ion-chip>
+      </div>
+      <div class="divider"></div>
+    </div>
+  </div>
+  <div *ngIf="mealsLoading | async" class="center-spinner">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+  <div *ngIf="visibleHeader" class="top-chip-holder">
+    <div class="chip-holder" #floatingChips>
+      <ion-chip [class]="cat.mbcatId == selectedCatId ? 'active':''" mode="md" *ngFor="let cat of categoryList | async" id="chf{{cat.mbcatId}}">
+        <ion-label (click)="selectedCategory(cat)">{{cat.mbcatName}}</ion-label>
+      </ion-chip>
+    </div>
+  </div>
+  <div class="meal-wrapper">
+    <ng-container *ngFor="let meal of brandMealsList | async">
+      <div class="meal-cat container" id="{{meal.catID}}">
+        {{meal.catName}}
+      </div>
+      <div *ngFor="let item of meal.items" [routerLink]="['/app/add-to-cart', item.productId]" routerDirection="forward" class="meal ion-activatable ripple-parent">
+        <ion-ripple-effect></ion-ripple-effect>
+        <div class="details">
+          <div class="name">{{item.productName}}</div>
+          <div class="price">{{item.inventoryList.length>0?"LKR "+item.inventoryList[0].mbinPrice :""}}</div>
+        </div>
+        <img [src]="imageUrlBase+'images/products/'+item.mbcaImage" alt="" />
+      </div>
+      <div class="divider meal-divider"></div>
+    </ng-container>
+  </div>
+  <app-view-cart-strip [routerLink]="['/app/check-out']" routerDirection="forward" class="view-cart-strip" *ngIf="showCartStrip"></app-view-cart-strip>
+</ion-content>

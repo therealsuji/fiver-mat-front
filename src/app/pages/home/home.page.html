@@ -1,0 +1,24 @@
+<ion-header mode='md'> 
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="loading">
+    <div *ngFor="let item of [0,0,0]" class="thumbnail-holder">
+      <ion-thumbnail>
+        <ion-skeleton-text animated  ></ion-skeleton-text>
+      </ion-thumbnail>
+    </div>
+  </div>
+
+  <app-match-card *ngFor="let item of matches" [user]="item" (click)="openMatch(item)"></app-match-card>
+  <ion-button mode='md' class="floating-filter">
+    Filters
+  </ion-button>
+</ion-content>

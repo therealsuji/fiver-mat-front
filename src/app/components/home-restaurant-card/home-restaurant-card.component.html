@@ -1,0 +1,70 @@
+<div class="restaurant-card ion-activatable ripple-parent">
+  <ion-ripple-effect></ion-ripple-effect>
+  <div class="details">
+    <div>
+      <div class="name">{{ mbbrName }}</div>
+      <div class="status">{{ mbbrStatus == 1 ? "Open" : "Close" }}</div>
+      <div class="food-types">
+        <div class="type" *ngFor="let category of brandCategories">
+          <span>{{ category.mmTitle }}</span>
+        </div>
+        <!-- <div class="type">Indian</div>
+        <div class="type">Kottu</div> -->
+      </div>
+    </div>
+    <div class="review-time-holder">
+      <div class="cur-status">
+        {{ availableHours }}
+        <!-- <img src="/assets/icons/delivery.svg" alt="" />
+        <ion-chip mode="ios">
+          <ion-label>35-40 min</ion-label>
+        </ion-chip> -->
+      </div>
+
+      <div class="reviews">
+        {{ starRate }}
+        <img src="/assets/icons/star.svg" alt="" />
+        (500+)
+      </div>
+    </div>
+  </div>
+  <div class="main-img">
+    <img src="{{ imageUrl }}{{ mbbrLogopath }}" alt="" />
+  </div>
+</div>
+
+<!-- 0:
+brandDescription: "Fab"
+brandLogoPath: "images/brands/BRN00006.jpg"
+brandName: "Fab"
+brandSite: "http://www.fab.com"
+mainMenu: Array(4)
+0:
+createdAt: "2020-05-20T19:15:19.000+00:00"
+mmAddBy: 1
+mmBrandId: 16
+mmId: 2
+mmImage: "images/main-menus/44b2aff8-ba91-4ef3-ac3d-90e75dde4def.jpg"
+mmLink: "fab/products/bread"
+mmModifyBy: 152
+mmOrder: 4
+mmStatus: 1
+mmTitle: "Bread"
+updatedAt: "2020-05-25T13:10:02.000+00:00" -->
+
+<!-- id:
+mbbrCategory: 7
+mbbrId: 16
+__proto__: Object
+mbbrAddBy: "1"
+mbbrBrndId: "BRN00006"
+mbbrDescription: "Fab"
+mbbrLogopath: "images/brands/BRN00006.jpg"
+mbbrMobileNo: ""
+mbbrModifyBy: null
+mbbrName: "Fab"
+mbbrOrderidPrefix: "FAB"
+mbbrPrefix: "fab"
+mbbrSite: "http://www.fab.com"
+mbbrStatus: 1
+mbbrTemplate: 1 -->

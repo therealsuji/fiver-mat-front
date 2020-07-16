@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <div class="cat">Basic Details</div>
+    <div class="input-group">
+      <ion-label>Name</ion-label>
+      <ion-input [value]="item.name" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Surname</ion-label>
+      <ion-input [value]="item.surname" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Date Of Birth</ion-label>
+      <ion-input [value]="item.dob" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Gender</ion-label>
+      <ion-input [value]="item.gender" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Martial Status</ion-label>
+      <ion-input [value]="item.martial_status" disabled></ion-input>
+    </div>
+ 
+    <div class="input-group">
+      <ion-label>Country</ion-label>
+      <ion-input [value]="item.country" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>State</ion-label>
+      <ion-input [value]="item.state" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>City</ion-label>
+      <ion-input [value]="item.city" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Postal Code</ion-label>
+      <ion-input [value]="item.postal_code" disabled></ion-input>
+    </div>
+    <div class="cat">Church Details</div>
+    <div class="input-group">
+      <ion-label>Name of Church Priest</ion-label>
+      <ion-input [value]="item.name_church_priest" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Church Contact No</ion-label>
+      <ion-input [value]="item.church_contact_no" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Denomination</ion-label>
+      <ion-input [value]="item.denomination" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Name of Church</ion-label>
+      <ion-input [value]="item.name_church" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Church Address</ion-label>
+      <ion-input [value]="item.church_add" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Year of Baptism</ion-label>
+      <ion-input [value]="item.year_baptism" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Ministry</ion-label>
+      <ion-input [value]="item.ministry" disabled></ion-input>
+    </div>
+    <div class="cat">Family Details</div>
+    <div class="input-group">
+      <ion-label>Fathers Name</ion-label>
+      <ion-input [value]="item.fathers_name" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Mothers Name</ion-label>
+      <ion-input [value]="item.mothers_name" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>No of Brothers</ion-label>
+      <ion-input [value]="item.no_brothers" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>No of Sisters</ion-label>
+      <ion-input [value]="item.no_sisters" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Parent Contact No</ion-label>
+      <ion-input [value]="item.parent_contact" disabled></ion-input>
+    </div>
+    <div class="cat">User Personal Details</div>
+    <div class="input-group">
+      <ion-label>Highest Education</ion-label>
+      <ion-input [value]="item.highest_edu" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Specialization</ion-label>
+      <ion-input [value]="item.specialization" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Occupation</ion-label>
+      <ion-input [value]="item.occupation" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Designation</ion-label>
+      <ion-input [value]="item.designation" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Annual Income</ion-label>
+      <ion-input [value]="item.annual_income" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Mother Tongue</ion-label>
+      <ion-input [value]="item.mother_tongue" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Language</ion-label>
+      <ion-input [value]="item.language" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Drink</ion-label>
+      <ion-input [value]="item.drink == 1 ? 'Yes': 'No'" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Smoke</ion-label>
+      <ion-input [value]="item.smoke == 1 ? 'Yes': 'No'" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Diet</ion-label>
+      <ion-input [value]="item.diet" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Partner Expectation</ion-label>
+      <ion-input [value]="item.partner_expectation" disabled></ion-input>
+    </div>
+    <div class="cat">User Physical Details</div>
+    <div class="input-group">
+      <ion-label>Height</ion-label>
+      <ion-input [value]="item.height" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Weight</ion-label>
+      <ion-input [value]="item.weight" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Complexion</ion-label>
+      <ion-input [value]="item.complexion" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Blood Group</ion-label>
+      <ion-input [value]="item.blood_group" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Body Type</ion-label>
+      <ion-input [value]="item.body_type" disabled></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Disability</ion-label>
+      <ion-input [value]="item.disability" disabled></ion-input>
+    </div>
+  </div>
+</ion-content>

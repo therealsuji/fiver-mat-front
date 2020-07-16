@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Lavinia Bakers</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="/assets/icons/back-btn.svg" color="dark" src="" defaultHref="app/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="container">
+      <div class="meal-name">Chicken Rice & Curry</div>
+      <div class="bold-text">Options</div>
+      <div class="opt-list">
+        <ion-list>
+          <ion-radio-group formControlName="orders">
+            <ion-item lines="none" *ngFor="let productInfo of productInfoList">
+              <ion-label>{{productInfo.mbinItemName}}</ion-label>
+              <ion-radio (click)="assignValue(productInfo)" [name]="productInfo.mbinItemName" [value]="productInfo.mbinId" mode="md" slot="end">Full Pack</ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </div>
+    </div>
+    <div class="container">
+      <div class="special-note">
+        <ion-label class="bold-text">Special Instructions</ion-label>
+        <ion-input formControlName="specialInstructions" placeholder="Add a note ( Extra cheese, No tomatoes, etc)"></ion-input>
+      </div>
+      <div class="qty-holder">
+        <div (click)="changeQtyVal(-1)" class="btn">
+          <ion-icon [ngClass]="{'minus': currentQty === 1}" name="remove-circle"></ion-icon>
+        </div>
+        <ion-input formControlName="currentQty" (keypress)="numberOnlyValidation($event)" type="number" #qty></ion-input>
+        <div (click)="changeQtyVal(1)" class="btn">
+          <ion-icon [ngClass]="{'minus': currentQty === maxVal}" name="add-circle"></ion-icon>
+        </div>
+      </div>
+      <div class="total">LKR<span>: {{currentPrice}}</span></div>
+      <ion-button type="submit" class="cart-add-btn" expand="block">
+        <ion-icon slot="start" name="cart"></ion-icon>
+        Add to Cart
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
+
+<!-- createdAt: "2020-05-19 17:48:24" routerLink="/app/check-out"
+mbinAddBy: "167"
+mbinBrandId: 18
+mbinDescription: "<p>For our lamprais, we use keeri samba mixed with ghee. We add generous servings of chicken curry, brinjal moju, boiled and fried egg, a serving of ash plantain curry, prawn sambol, seeni sambol, and a fish cutlet to complete this wholesome experience.</p>
+↵"
+mbinId: 1598
+mbinImages: "[{"position":0,"file":"single-product-32970.JPG"}]"
+mbinIsVegetable: false
+mbinIsWording: false
+mbinItemName: "Chicken Lamprais"
+mbinItemSlug: "chicken-lamprais"
+mbinLeadTime: 0
+mbinLeadTimeQty: 0
+mbinMasterItemCode: "LA0015"
+mbinMaxQty: 100
+mbinMinQty: 1
+mbinModifiedBy: "167"
+mbinOrder: null
+mbinOutletId: 0
+mbinPrice: "475"
+mbinProductId: 467
+mbinReorderLevel: 0
+mbinServingSize: ""
+mbinStatus: 1
+mbinTotalcount: 992
+mbinTypeId: "INF01594"
+updatedAt: "2020-06-07 14:03:46"
+__proto__: Object -->

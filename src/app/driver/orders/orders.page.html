@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment mode="md" [(ngModel)]="selectedSegment" (ionChange)="selectSegment($event)">
+    <ion-segment-button [value]="1">
+      New
+    </ion-segment-button>
+    <ion-segment-button [value]="2">
+      Done
+    </ion-segment-button>
+  </ion-segment>
+  <ion-virtual-scroll *ngIf="selectedSegment == 1" [items]="readyOrders | async" approxItemHeight="50px">
+    <ion-item *virtualItem="let item" button (click)="openOrder(item)">
+      <ion-label>Order ID: {{item.mborOrderId}}</ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+  <ion-virtual-scroll *ngIf="selectedSegment == 2" [items]="doneOrders | async" approxItemHeight="50px">
+    <ion-item *virtualItem="let item" button (click)="openOrder(item)">
+      <ion-label>Order ID: {{item.mborOrderId}}</ion-label>
+    </ion-item>
+  </ion-virtual-scroll>
+</ion-content>

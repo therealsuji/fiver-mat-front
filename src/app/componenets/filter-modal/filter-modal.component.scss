@@ -1,0 +1,22 @@
+.input-group {
+  margin-top: 10px;
+  ion-label {
+    margin-left: 4px;
+  }
+  ion-select,
+  ion-datetime,
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    margin-top: 5px;
+    border-radius: 14px;
+    border: 1px solid #cecece;
+    background: white;
+  }
+}
+.save-btn {
+  position: absolute;
+  margin-left: 18px;
+  width: 90%;
+  bottom: 50px;
+}

@@ -1,0 +1,58 @@
+@import "src/theme/colors.scss";
+
+ion-toolbar {
+  --background: white;
+  ion-title {
+    color: $base-color;
+  }
+}
+ion-back-button {
+  font-size: 15px;
+  margin-left: 15px;
+}
+.image-wrapper {
+  img {
+    max-width: 100%;
+    border-radius: 45px;
+    border: 1px solid $base-color;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    margin-top: 50px;
+  }
+  .user-name {
+    margin-top: 25px;
+    font-weight: 500;
+    font-size: 20px;
+    text-align: center;
+  }
+  .edit-prof {
+    text-align: center;
+    color: $base-color;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+}
+.menus {
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+.label {
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
+}
+.wrapper {
+  margin-top: 15px;
+  display: flex;
+  ion-icon {
+    font-size: 20px;
+    align-self: center;
+    margin-right: 15px;
+  }
+}
+.green-btn {
+  display: inline-block;
+  color: $base-color;
+}

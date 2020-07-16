@@ -1,0 +1,30 @@
+@import "src/theme/colors.scss";
+
+.res-tile {
+  overflow: hidden;
+  border-radius: 15px;
+  display: inline-block;
+  box-shadow: $box-shadow;
+  margin-bottom: 15px;
+  max-width: 225px;
+  .bottom {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .res-name-status-holder {
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      font-weight: bold;
+    }
+    .status {
+      color: #{$base-color};
+    }
+  }
+  .cur-status {
+    color: #{$base-color};
+    font-size: 16px;
+  }
+}

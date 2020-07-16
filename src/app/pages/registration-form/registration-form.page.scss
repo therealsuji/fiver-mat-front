@@ -1,0 +1,41 @@
+#progress-circle {
+  max-width: 50px;
+  position: relative;
+}
+
+.progress-container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.current-step {
+  color: #13315c;
+  font-weight: bold;
+  font-size: 20px;
+}
+.next-step {
+  color: #13315c;
+  font-weight: bold;
+  font-size: 15px;
+}
+.input-group {
+  margin-top: 10px;
+  ion-label {
+    margin-left: 4px;
+  }
+  ion-select,
+  ion-datetime,
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    margin-top: 5px;
+    border-radius: 14px;
+    border: 1px solid #cecece;
+    background: white;
+  }
+}
+ion-button{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

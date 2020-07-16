@@ -1,0 +1,51 @@
+@import "src/theme/colors.scss";
+
+ion-toolbar {
+  --background: white;
+  ion-title {
+    color: $base-color;
+  }
+}
+.fi-block {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  .small {
+    font-weight: 500;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .large {
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .medium {
+    font-weight: 500;
+    font-size: 20px;
+  }
+}
+.radio-holder {
+  margin-top: 25px;
+  display: flex;
+  margin-bottom: 20px;
+  ion-radio-group {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    ion-radio {
+      margin: 0;
+      --color-checked: #{$base-color};
+    }
+    ion-label {
+      margin-left: 5px;
+      font-size: 15px;
+      span {
+        font-size: 12px;
+      }
+    }
+    radio-wrapper {
+      align-self: center;
+      display: flex;
+    }
+  }
+}

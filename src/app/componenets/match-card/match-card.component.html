@@ -1,0 +1,11 @@
+<div class="match-card ion-activatable ripple-parent" style="background-image: url({{user.profile_pic}});">
+  <ion-ripple-effect></ion-ripple-effect>
+
+  <div class="join-date">Joined {{user.created_at | date : 'fullDate'}}</div>
+  <div class="details">
+    <div>{{user.name}} {{user.surname}}</div>
+    <div>{{dob}} Years</div>
+    <div>{{user.mother_tongue}}</div>
+    <div>{{user.martial_status}}</div>
+   </div>
+</div>

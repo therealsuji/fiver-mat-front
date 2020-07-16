@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Delivery Details</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()"></ion-button>
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+  <!-- <ion-searchbar class="searchbar-input" #searchString id="searchString" [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()"
+    placeholder="Search for a place"></ion-searchbar>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list> -->
+  <input 
+        type="text" class='asd'
+        [(ngModel)]="autocomplete.input"
+        #searchString style="padding: 12px 20px; border: 1px solid #ccc; width: 400px; color:black"
+        >
+
+  <!-- <input class="input"
+        type="text"
+        [(ngModel)]="autocomplete.input"
+        #searchString style="padding: 12px 20px; border: 1px solid #ccc; width: 400px"
+        > -->
+  
+
+  
+  <!-- <div class="ion-margin; ion-text-center" >
+  <ion-button  (click)="GoTo()" >Go To Selected Location</ion-button>
+</div> -->
+
+  <div #map id="map"></div>
+
+  <div class="content">
+    <form class="flex-column" [formGroup]="savedLocationForm" >
+      <ion-card *ngFor="let location of savedLocationsList">
+        <ion-card-header>
+            <ion-card-title>{{location.mbspShippingCompany}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+
+          <h2>{{location.mbspShippingAddress}},{{location.mbspShippingAddresstwo}}</h2>
+
+          <!-- <ion-item>
+            <div class="da-storename">Address Line 1</div>
+            <div class="da-address-line" >{{location.mbspShippingAddress}}</div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">{{location.mbspShippingAddresstwo}}</ion-label>
+            <ion-input formControlName="addressLine2" [ngModel]="location.mbspShippingAddresstwo" type='text'></ion-input>
+          </ion-item> -->
+
+          <div class="ion-margin; ion-text-center">
+            <ion-button (click)="updateLocation(location,savedLocationForm)" slot="end" class="ion-margin-top">Update</ion-button>
+            <ion-button slot="end" color="danger" fill="outline" class="ion-margin-top" (click)="removeAddress(location)"><ion-icon name="trash-outline"></ion-icon>
+            Remove</ion-button>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </form>
+    <form class="flex-column" [formGroup]="locationSaveForm" >
+      <ion-card>
+        <ion-card-content>
+
+          <ion-item>
+            <ion-label position="floating">Building/Business Name</ion-label>
+            <ion-input formControlName="addressName" type='text'></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Address Line 1</ion-label>
+            <ion-input formControlName="addressLine1" type='text'></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Address Line 2</ion-label>
+            <ion-input formControlName="addressLine2" type='text'></ion-input>
+          </ion-item>
+
+          <div class="ion-margin; ion-text-center">
+            <ion-button (click)="saveLocation()" slot="end" class="ion-margin-top">Save</ion-button>
+            <ion-button slot="end" color="danger" fill="outline" class="ion-margin-top" (click)="dismiss()">Close
+            </ion-button>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </div>
+
+</ion-content>

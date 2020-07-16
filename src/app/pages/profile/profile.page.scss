@@ -1,0 +1,31 @@
+.input-group {
+  margin-top: 10px;
+  ion-label {
+    margin-left: 4px;
+  }
+  ion-select,
+  ion-datetime,
+  ion-input {
+    --padding-start: 10px;
+    --padding-end: 10px;
+    margin-top: 5px;
+    border-radius: 14px;
+    border: 1px solid #cecece;
+    background: white;
+  }
+}
+ion-content {
+  --padding-bottom: 65px;
+}
+.floatingBtn{
+    position: fixed;
+    z-index: 99;
+    bottom: 15px;
+    width: 90%;
+    margin: 0;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    --background: #4fbf4f;
+}

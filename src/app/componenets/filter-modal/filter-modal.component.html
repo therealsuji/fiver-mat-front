@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Search</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <div class="input-group">
+      <ion-label>Martial Status</ion-label>
+      <ion-select [(ngModel)]="martialValue">
+        <ion-select-option *ngFor="let item of martialStatusDropDownValues" [value]="item.field_value">
+          {{item.field_value}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+    <div class="input-group">
+      <ion-label>Mother Tongue</ion-label>
+      <ion-select [(ngModel)]="motherTongue">
+        <ion-select-option *ngFor="let item of motherTongueDropDownValues" [value]="item.field_value">
+          {{item.field_value}}
+        </ion-select-option>
+      </ion-select>
+    </div>
+    <div class="input-group">
+      <ion-label>Name </ion-label>
+      <ion-input [(ngModel)]="nameValue"></ion-input>
+    </div>
+    <div class="input-group">
+      <ion-label>Age </ion-label>
+      <ion-select [interfaceOptions]="customAlertOptions" interface="alert"  [(ngModel)]="ageValue">
+        <ion-select-option *ngFor="let i of age" [value]="i">
+          {{i}}
+        </ion-select-option>
+      </ion-select> 
+    </div>
+  </div>
+  <ion-button class="save-btn" mode="md" expand="block" (click)="save()">Save Filters</ion-button>
+</ion-content>

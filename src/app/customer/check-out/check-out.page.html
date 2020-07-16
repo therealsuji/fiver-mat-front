@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Lavinia Bakers</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="/assets/icons/back-btn.svg" color="dark" src="" defaultHref="app/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="container">
+    <div class="chip-holder">
+      <ion-chip [ngClass]="{'active': shoppingMode === DELIVERY}" (click)="changeMode(DELIVERY)" mode="md">
+        <ion-label>Delivery</ion-label>
+      </ion-chip>
+      <ion-chip [ngClass]="{'active': shoppingMode === STORE_PICKUP}" (click)="changeMode(STORE_PICKUP)" mode="md" class="active">
+        <ion-label>Store pick up</ion-label>
+      </ion-chip>
+    </div>
+    <div class="input-group">
+      <div class="label-wrapper">
+        <div class="icon-base">
+          <ion-icon src="/assets/icons/material-location-on.svg"></ion-icon>
+        </div>
+        <ion-label>Delivery Location</ion-label>
+      </div>
+      <div class="input-wrapper">
+        <div class="input-holder">
+          <input type="text" value="{{addressLine1}},{{addressLine2}}" />
+          <!-- <ion-icon name="arrow-forward" slot="end" icon-only></ion-icon> -->
+        </div>
+        <!-- <ion-icon src="/assets/icons/my-location.svg"></ion-icon> -->
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="label-wrapper">
+        <div class="icon-base">
+          <ion-icon src="/assets/icons/store.svg"></ion-icon>
+        </div>
+        <ion-label>Store Location</ion-label>
+      </div>
+      <div class="input-wrapper">
+        <div class="input-holder disabled" *ngIf="shoppingMode == DELIVERY">
+          <input class="brand-input" type="text" value="{{currentBrandName}}" disabled />
+        </div>
+        <ion-select
+          placeholder="Please select a outlet"
+          [interfaceOptions]="customPopoverOptions"
+          [(ngModel)]="outletId"
+          *ngIf="shoppingMode == STORE_PICKUP"
+          value=""
+          okText="Okay"
+          cancelText="Dismiss"
+        >
+          <ion-select-option *ngFor="let item of restOutlets" value="{{item.ouId}}">{{item.ouName}}</ion-select-option>
+        </ion-select>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="label-wrapper">
+        <div class="icon-base">
+          <ion-icon src="/assets/icons/calendar.svg"></ion-icon>
+        </div>
+        <ion-label>Delivery Date</ion-label>
+      </div>
+      <div class="input-wrapper">
+        <ion-datetime [(ngModel)]="deliveryDate" displayFormat="YYYY-MM-DD"></ion-datetime>
+      </div>
+    </div>
+    <div class="input-group">
+      <div class="label-wrapper">
+        <div class="icon-base">
+          <ion-icon style="font-size: 25px;" src="/assets/icons/clock.svg"></ion-icon>
+        </div>
+        <ion-label>Delivery Time</ion-label>
+      </div>
+      <div class="input-wrapper">
+        <ion-datetime [(ngModel)]="deliveryTime" displayFormat="h:mm a"></ion-datetime>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+
+  <div class="container">
+    <div class="cart-items">
+      <div class="item" *ngFor="let item of shoppingItems |async">
+        <ion-label>
+          {{item.pname}}
+        </ion-label>
+        <div class="details">
+          <div class="price">LKR <span> {{item.unit_price}}</span></div>
+          <div class="qty-holder">
+            <div class="delete-item" (click)="deleteItem(item.master_id)">
+              <ion-icon name="trash"></ion-icon>
+            </div>
+            <div [ngClass]="{'minus': item.count === 1}" class="btn" (click)="changeQtyVal(item.master_id,-1)">
+              <ion-icon name="remove-circle"></ion-icon>
+            </div>
+            <ion-input [(ngModel)]="item.count" [value]="item.count" type="number" disabled></ion-input>
+            <div [ngClass]="{'minus': item.count === maxVal}" class="btn" (click)="changeQtyVal(item.master_id,1)">
+              <ion-icon name="add-circle"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="price-details container">
+    <div class="price-type">
+      <span>Sub Total (LKR)</span>
+      <div>LKR <span>{{totalValue}}</span></div>
+    </div>
+    <div class="price-type">
+      <span>Delivery Charge (LKR)</span>
+      <div>LKR <span>30.00</span></div>
+    </div>
+    <div class="price-type">
+      <span>Discount (LKR)</span>
+      <div>LKR <span>0.00</span></div>
+    </div>
+    <div class="price-type total">
+      <span>Total (LKR)</span>
+      <div>LKR <span>{{fullTotalValue}}</span></div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="pay-type container">
+    <div class="pay-label"><ion-icon src="/assets/icons/cash.svg"></ion-icon><span>Cash</span></div>
+    <span class="green">Change</span>
+  </div>
+  <div class="divider" style="margin-top: 15px;"></div>
+  <div class="pay-type container">
+    <div class="pay-label"><ion-icon src="/assets/icons/promo.svg"></ion-icon><span>Promo Code</span></div>
+    <span class="green">Add</span>
+  </div>
+  <ion-button (click)="checkout()" routerDirection="forward" class="cart-add-btn container" expand="block">
+    <ion-icon slot="start" name="cart"></ion-icon>
+    Place Order
+  </ion-button>
+</ion-content>
+<!-- routerLink="/app/check-out" -->

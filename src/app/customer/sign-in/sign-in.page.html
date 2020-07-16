@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Sign-Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <form class="flex-column" [formGroup]="signUPForm" (ngSubmit)="signUp()">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Create Account</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">First name</ion-label>
+        <ion-input formControlName="firstName" type='text'></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Last name</ion-label>
+        <ion-input formControlName="lastName" type='text'></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="email" type='email'></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Mobile</ion-label>
+        <ion-input formControlName="mobile" type='tel'></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input formControlName="password" type='password'></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Re-type Password</ion-label>
+        <ion-input formControlName="rePassword" type='password'></ion-input>
+      </ion-item> -->
+
+      <div>
+        <ion-button class="ion-margin" expand="block" type='submit'>Create Account</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</form>
+</div>
+</ion-content>

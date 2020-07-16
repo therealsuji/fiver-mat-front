@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div class="order-card container" *ngFor="let item of orders ">
+    <div>Order ID: <span>{{item.mborOrderId}}</span></div>
+    <div>Restaurant: <span>{{item.brandName}}</span></div>
+    <div>Payment: LKR <span>{{item.mborTotalitemcost}}</span></div>
+    <div>Staus: <span class="status" [ngClass]="{'cancelled': item.mborOrderStatus === orderStatuses.CANCELLED}">{{getStatus(item.mborOrderStatus)}}</span></div>
+  </div>
+</ion-content>

@@ -1,0 +1,64 @@
+@import "../../../theme/colors.scss";
+@import "../../../helper.scss";
+:host{
+  background: $base-color;
+}
+.input-wrapper {
+  box-shadow: 2px 2px 14px 4px #0000001f;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 25px;
+
+  ion-input {
+    color: #8da9c4;
+  }
+
+  ion-icon {
+    color: #8da9c4;
+  }
+}
+ion-button {
+  min-height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.logo {
+  @include for-iphone5-only {
+    margin-top: 45px;
+    max-width: 200px;
+  }
+  margin-top: 125px;
+  margin-bottom: 25px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 225px;
+
+}
+.welcome {
+  font-size: 25px;
+  text-align: center;
+}
+.small-text {
+  text-align: center;
+  margin-bottom: 35px;
+}
+.or {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 30px 20px 10px 20px;
+  span {
+    background: $base-color;
+    padding: 0 10px;
+  }
+}
+
+.login-btn {
+  margin-top: 25px;
+}
+.sign-btn {
+  @include for-iphone5-only {
+    margin-top: 20px;
+  }
+  margin-top: 45px;
+}

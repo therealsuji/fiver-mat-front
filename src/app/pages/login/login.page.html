@@ -1,0 +1,26 @@
+ 
+<ion-content>
+  <div class="logo">
+    <img src="assets/icon/logo.png" alt="">
+  </div>
+  <div class="welcome">Welcome Back</div>
+  <div class="small-text">Login to continue</div>
+  <div>
+     <ion-item class="input-wrapper" lines='none'>
+       <ion-input type='number' [(ngModel)]="credentials.email" placeholder="Mobile Number"></ion-input>
+       <ion-icon name="call" slot="start"></ion-icon>
+     </ion-item>
+     <ion-item class="input-wrapper " lines='none'>
+       <ion-input type='password'  [(ngModel)]="credentials.password" placeholder="Password"></ion-input>
+       <ion-icon name="lock-closed" slot="start"></ion-icon>
+     </ion-item>
+  </div>
+  <div class="error">{{error}}</div>
+  <ion-button (click)="login()" class="login-btn" mode="md" expand="block">Login</ion-button>
+  <div class="or"><span>Or</span></div>
+
+
+   <ion-button routerLink="/signup" routerDirection='forward' class="sign-btn" mode="md" expand="block">Sign Up</ion-button>
+   <ion-button routerLink="/continue-reg" routerDirection='forward' class="sign-btn" mode="md" expand="block">Continue Registration</ion-button>
+
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Category</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" color="dark" icon="/assets/icons/back-btn.svg" defaultHref="app/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-home-restaurant-card
+    *ngFor="let brand of brandList"
+    [mbbrName]="brand.mbbrName"
+    [mbbrStatus]="brand.mbbrStatus"
+    [mbbrLogopath]="brand.mbbrLogopath"
+    [routerLink]="['/app/cat-details',brand.id.mbbrId,brand.mbbrName,true]"
+    routerDirection="forward"
+  >
+  </app-home-restaurant-card>
+</ion-content>

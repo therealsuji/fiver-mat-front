@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Sign Up</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="center-form">
+    <div>
+      <div class="container">
+        <ion-label >Please enter your mobile number to register</ion-label>
+      </div>
+      <ion-item class="input-wrapper" lines='none'>
+        <ion-input type='number' [(ngModel)]="mobileNumber" placeholder="Mobile Number"></ion-input>
+        <ion-icon name="call" slot="start"></ion-icon>
+      </ion-item>
+   </div>
+   <div class="error">{{error}}</div>
+
+   <ion-button (click)="registerUser()" class="btn" mode="md" expand="block">Sign up</ion-button>
+  </div>
+  
+</ion-content>
